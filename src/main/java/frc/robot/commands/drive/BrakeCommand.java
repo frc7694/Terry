@@ -9,15 +9,23 @@ import java.util.function.BooleanSupplier;
 public class BrakeCommand extends Command {
 
     BooleanSupplier done;
+    long start;
+    long time;
 
     public BrakeCommand(BooleanSupplier done) {
         super();
         this.done = done;
     }
 
+    public BrakeCommand(long time) {
+        this.time = time;
+        this.done = () -> System.currentTimeMillis() - start > time;
+    }
+
     @Override
     public void initialize() {
         Variables.perryIsControllingHimselfAgainOhNo = true;
+        this.start = System.currentTimeMillis();
         super.initialize();
     }
 

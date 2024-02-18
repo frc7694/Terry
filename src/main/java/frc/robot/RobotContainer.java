@@ -21,6 +21,8 @@ public class RobotContainer {
   public static final ClimberSusbystem m_climber = new ClimberSusbystem();
   public static final DashboardSubsystem m_robotDash = new DashboardSubsystem();
   public static final SemiAutoSubsystem m_robotSemiAuto = new SemiAutoSubsystem(new XYManual(), new RManual());
+  public static final OdometrySubsystem m_odometry = new OdometrySubsystem();
+  public static final PneumaticSubsystem m_pneumatics = new PneumaticSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.

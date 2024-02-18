@@ -10,4 +10,10 @@ public class RManual implements RotationController {
     public double getR() {
         return -MathUtil.applyDeadband(JoystickAxis.RX.getPos(), OIConstants.kDriveDeadband);
     }
+
+    @Override
+    public String toString() {
+        return "MAN";
+    }
+
 }

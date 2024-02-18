@@ -176,7 +176,7 @@ public final class Constants {
     }
 
     public static final class ClimberConstants {
-        public static final int kClimberCanID = 12;
+        public static final int kClimberCanID = 13;
     }
 
   public static final class LimeLightConstants {
@@ -204,9 +204,13 @@ public final class Constants {
 
   public static final class PIDConstants {
       public static final double kDriveRotationP = .01;
-      public static final double kDriveRotationI = .02;
-      public static final double kDriveRotationD = .001;
+      public static final double kDriveRotationI = 0;
+      public static final double kDriveRotationD = 0;
       public static final double kDriveRotationT = .5;
+      public static final double kAprilRotationP = .01;
+      public static final double kAprilRotationI = .01;
+      public static final double kAprilRotationD = .001;
+      public static final double kAprilRotationT = .25;
   }
 
 }

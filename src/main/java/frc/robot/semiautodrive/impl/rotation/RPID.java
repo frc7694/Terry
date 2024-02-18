@@ -4,6 +4,7 @@ import frc.robot.OI.Controller;
 import frc.robot.RobotContainer;
 import frc.robot.semiautodrive.RotationController;
 import frc.robot.systems.Orangutan;
+import frc.robot.values.PID;
 import frc.robot.values.Variables;
 
 public class RPID implements RotationController {
@@ -17,23 +18,28 @@ public class RPID implements RotationController {
     @Override
     public void initialize() {
         Variables.perryIsControllingHimselfAgainOhNo = true;
-        Variables.rotationPID.setSetpoint(desiredState);
+        PID.autoRotationPID.setSetpoint(desiredState);
     }
 
     @Override
     public double getR() {
-        return -Variables.rotationPID.calculate(Orangutan.get());
+        return -PID.autoRotationPID.calculate(Orangutan.get());
     }
 
     @Override
     public boolean isFinished() {
-        return Variables.rotationPID.atSetpoint() || Controller.XBox.getYButton();
+        return PID.autoRotationPID.atSetpoint() || Controller.XBox.getYButton();
     }
 
     @Override
     public void end() {
         RobotContainer.setX();
         Variables.perryIsControllingHimselfAgainOhNo = false;
+    }
+
+    @Override
+    public String toString() {
+        return "PID";
     }
 
 }

@@ -5,10 +5,10 @@ import frc.robot.systems.Orangutan;
 import frc.robot.values.Constants.GyroConstants;
 import frc.robot.values.PID;
 
-public class RLock implements RotationController {
+public class RLockBack implements RotationController {
     @Override
     public void initialize() {
-        PID.autoRotationPID.setSetpoint(GyroConstants.kNN);
+        PID.autoRotationPID.setSetpoint(GyroConstants.kSS);
     }
 
     @Override

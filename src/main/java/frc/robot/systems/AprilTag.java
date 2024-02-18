@@ -11,6 +11,7 @@ public class AprilTag {
 
     public static void init() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
+        table.getEntry("pipeline").setDouble(1);
     }
 
     public static double getDistance() {

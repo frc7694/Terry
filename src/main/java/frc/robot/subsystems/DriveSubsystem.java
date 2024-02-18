@@ -69,6 +69,15 @@ public class DriveSubsystem extends SubsystemBase {
   public DriveSubsystem() {
   }
 
+  public SwerveModulePosition[] getPoses() {
+    return new SwerveModulePosition[] {
+            m_frontLeft.getPosition(),
+            m_frontRight.getPosition(),
+            m_rearLeft.getPosition(),
+            m_rearRight.getPosition()
+    };
+  }
+
   @Override
   public void periodic() {
     // Update the odometry in the periodic block

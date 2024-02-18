@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import frc.robot.OI.button.ButtonType;
 import frc.robot.OI.button.HIDI.KeyButton;
 import frc.robot.OI.button.HIDI.PadButton;
+import frc.robot.OI.button.HIDI.TransportButton;
 import frc.robot.RobotContainer;
 import frc.robot.commands.shooter.Speed;
 import frc.robot.commands.shooter.SpeedCommand;
@@ -16,6 +17,9 @@ import frc.robot.controls.When;
 import frc.robot.OI.Controller;
 import frc.robot.OI.button.HID.*;
 import frc.robot.semiautodrive.impl.rotation.RAprilTag;
+import frc.robot.semiautodrive.impl.rotation.RLock;
+import frc.robot.semiautodrive.impl.rotation.RLockBack;
+import frc.robot.semiautodrive.impl.rotation.RManual;
 import frc.robot.subsystems.SemiAutoSubsystem;
 import frc.robot.values.Variables;
 
@@ -31,7 +35,15 @@ public enum Comp implements ControlList {
     ShooterIn(      Controller.HIDI3, PadButton.P2,            When.ON_TRUE,    new SpeedCommand(Speed.INTAKE)),
     ShootAmp(       Controller.HIDI3, PadButton.P3,            When.ON_TRUE,    new SpeedCommand(Speed.AMP)),
     ShootSpeaker(   Controller.HIDI3, PadButton.P4,            When.ON_TRUE,    new SpeedCommand(Speed.SPEAKER)),
-    AprilLock(      Controller.XBox,  ClickableButton.A,       When.ON_TRUE,    new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RAprilTag())));
+    AprilLock(      Controller.XBox,  ClickableButton.A,       When.ON_TRUE,    new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RAprilTag()))),
+    NoAprilLock(    Controller.XBox,  ClickableButton.A,       When.ON_FALSE,   new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RManual()))),
+    LockN(          Controller.XBox,  POVButton.NN,            When.ON_TRUE,    new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RLock()))),
+    LockS(          Controller.XBox,  POVButton.SS,            When.ON_TRUE,    new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RLockBack()))),
+    RManual(        Controller.XBox,  POVButton.WW,            When.ON_TRUE,    new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RManual()))),
+    KickUp(         Controller.HIDI3, TransportButton.SUS,     When.ON_TRUE,    new InstantCommand(RobotContainer.m_pneumatics::kickUp)),
+    KickDown(       Controller.HIDI3, TransportButton.SUS,     When.ON_FALSE,   new InstantCommand(RobotContainer.m_pneumatics::kickDown));
+//    Compress(      Controller.HIDI1,  KeyButton.c4,            When.ON_TRUE,    new InstantCommand(RobotContainer.m_pneumatics::init));
+//    ClimberUp(     );
 
 //    NN(              Controller.XBox, POVButton.NN,            When.ON_TRUE,    new PIDRotateCommand(180)),
 //    SS(              Controller.XBox, POVButton.SS,            When.ON_TRUE,    new PIDRotateCommand(360)),

@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.OI.Controller;
 import frc.robot.values.Constants.ClimberConstants;
@@ -10,6 +11,7 @@ import frc.robot.values.Constants.ClimberConstants;
 public class ClimberSusbystem extends SubsystemBase {
 
     WPI_VictorSPX climber;
+    DigitalInput limit = new DigitalInput(0);
 
     public void init() {
         climber = new WPI_VictorSPX(ClimberConstants.kClimberCanID);
@@ -19,7 +21,11 @@ public class ClimberSusbystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        climber.set(ControlMode.PercentOutput, Controller.HIDI3.getRawAxis(0));
+        climber.set(ControlMode.PercentOutput, getLimit() ? Controller.HIDI3.getRawAxis(0) : 0);
+    }
+
+    public boolean getLimit() {
+        return limit.get();
     }
 
 }

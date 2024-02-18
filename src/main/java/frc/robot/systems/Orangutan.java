@@ -1,6 +1,7 @@
 package frc.robot.systems;
 
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.SPI;
 
 public class Orangutan {
@@ -26,12 +27,23 @@ public class Orangutan {
         Orangutan.offset = offset;
     }
 
+    public static void changeOffsetBy(double delta) {
+        offset += delta;
+        while (offset < 0) {
+            offset += 360;
+        }
+        offset = offset % 360;
+    }
+
     private static double positive() {
         return gyro.getYaw() + 180;
     }
 
     public static double get() {
         return positive() - offset;
+    }
+    public static Rotation2d get2D() {
+        return Rotation2d.fromDegrees(get());
     }
 
     public static boolean is(double desiredPos) {

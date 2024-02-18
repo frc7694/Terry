@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
     RobotContainer.m_robotDash.init();
     AprilTag.init();
     RobotContainer.m_climber.init();
+    RobotContainer.m_odometry.init();
     if (Robot.isReal()) {
       Banana.init();
     }
@@ -69,6 +70,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+//    RobotContainer.m_pneumatics.init();
   }
 
   @Override

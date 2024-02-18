@@ -72,4 +72,8 @@ public class SemiAutoSubsystem extends SubsystemBase {
         rCtrl.initialize();
     }
 
+    public String getRotation() {
+        return rCtrl.toString();
+    }
+
 }
