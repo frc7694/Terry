@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
     AprilTag.init();
     RobotContainer.m_climber.init();
     RobotContainer.m_odometry.init();
+    RobotContainer.m_lights.init();
     if (Robot.isReal()) {
       Banana.init();
     }

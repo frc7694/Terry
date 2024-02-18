@@ -16,13 +16,13 @@ public class LauncherSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         double percent = (Controller.HIDI1.getRawAxis(3) + 1) / 2;
-        left.set(speed.value * percent);
-        right.set(-speed.value * percent);
+        left.set(speed.getValue() * percent);
+        right.set(-speed.getValue() * percent);
     }
 
     public double getSpeed() {
         double percent = (Controller.HIDI1.getRawAxis(3) + 1) / 2;
-        return speed.value * percent;
+        return speed.getValue() * percent;
     }
 
     public void setSpeed(Speed speed) {

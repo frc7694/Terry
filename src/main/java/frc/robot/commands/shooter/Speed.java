@@ -1,14 +1,22 @@
 package frc.robot.commands.shooter;
 
+import frc.robot.systems.AprilTag;
+
+import java.util.function.DoubleSupplier;
+
 public enum Speed {
-    OFF(0),
-    INTAKE(-.125),
-    AMP(.12),
-    SPEAKER(1);
+    OFF(() -> 0),
+    INTAKE(() -> -.125),
+    AMP(() ->.12),
+    SPEAKER(() -> AprilTag.getDistance() < 12 ? (-.025 * AprilTag.getDistance()) + 1.6 : 0);
 
-    public final double value;
+    private final DoubleSupplier value;
 
-    Speed(double value) {
+    public double getValue() {
+        return value.getAsDouble();
+    }
+
+    Speed(DoubleSupplier value) {
         this.value = value;
     }
 

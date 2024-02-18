@@ -23,6 +23,7 @@ public class RobotContainer {
   public static final SemiAutoSubsystem m_robotSemiAuto = new SemiAutoSubsystem(new XYManual(), new RManual());
   public static final OdometrySubsystem m_odometry = new OdometrySubsystem();
   public static final PneumaticSubsystem m_pneumatics = new PneumaticSubsystem();
+  public static final LightSubsystem m_lights = new LightSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
