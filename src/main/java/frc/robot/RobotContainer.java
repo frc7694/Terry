@@ -5,7 +5,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.semiautodrive.impl.rotation.RLock;
 import frc.robot.semiautodrive.impl.rotation.RManual;
 import frc.robot.semiautodrive.impl.strafe.XYManual;
 import frc.robot.subsystems.*;
@@ -62,7 +61,6 @@ public class RobotContainer {
           button.whileFalse(control.getFunction());
           break;
         case ON_TOGGLE:
-          // TODO: make encoder toggle instead of wait and turn off
           button.onTrue(control.getFunction());
           button.onFalse(control.getFunction());
           break;

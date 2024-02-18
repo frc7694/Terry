@@ -1,8 +1,6 @@
 package frc.robot.values;
 
-import edu.wpi.first.math.controller.PIDController;
-import frc.robot.commands.shooter.Speed;
-import frc.robot.values.Constants.*;
+import frc.robot.values.Constants.OIConstants;
 
 // like Constants.java but for things that aren't constant
 public class Variables {

@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkLowLevel;
 import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.OI.Controller;
 import frc.robot.commands.shooter.Speed;
 import frc.robot.values.Constants.LauncherConstants;
 
@@ -15,14 +14,16 @@ public class LauncherSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        double percent = (Controller.HIDI1.getRawAxis(3) + 1) / 2;
-        left.set(speed.getValue() * percent);
-        right.set(-speed.getValue() * percent);
+        left.set(speed.getValue());
+        right.set(-speed.getValue());
     }
 
     public double getSpeed() {
-        double percent = (Controller.HIDI1.getRawAxis(3) + 1) / 2;
-        return speed.getValue() * percent;
+        return speed.getValue();
+    }
+
+    public Speed getSpeedMode() {
+        return speed;
     }
 
     public void setSpeed(Speed speed) {

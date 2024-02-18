@@ -1,21 +1,15 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.PneumaticHub;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import java.util.UUID;
 
 public class PneumaticSubsystem extends SubsystemBase {
 
     public PneumaticSubsystem() {
         compressor.enableAnalog(100, 115);
     }
-
-//    PneumaticHub pHub = new PneumaticHub(14);
     Compressor compressor = new Compressor(14, PneumaticsModuleType.REVPH);
     Solenoid kicker = new Solenoid(14, PneumaticsModuleType.REVPH, 0);
 

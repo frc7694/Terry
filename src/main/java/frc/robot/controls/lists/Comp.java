@@ -21,7 +21,6 @@ import frc.robot.semiautodrive.impl.rotation.RAprilTag;
 import frc.robot.semiautodrive.impl.rotation.RLock;
 import frc.robot.semiautodrive.impl.rotation.RLockBack;
 import frc.robot.semiautodrive.impl.rotation.RManual;
-import frc.robot.subsystems.SemiAutoSubsystem;
 import frc.robot.values.Variables;
 
 public enum Comp implements ControlList {

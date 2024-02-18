@@ -13,7 +13,7 @@ public class PID {
         pid.enableContinuousInput(Constants.GyroConstants.kAlsoSS, Constants.GyroConstants.kSS);
         return pid;
     }
-    public static PIDController aprilRotationPID = getAutoRotationPID();
+    public static PIDController aprilRotationPID = getAprilRotationPID();
     private static PIDController getAprilRotationPID() {
         PIDController pid = new PIDController(
                 Constants.PIDConstants.kAprilRotationP,

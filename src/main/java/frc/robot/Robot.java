@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.systems.AprilTag;
+import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.systems.Banana;
 import frc.robot.systems.Orangutan;
 import frc.robot.values.Variables;
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
       DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
     }
     RobotContainer.m_robotDash.init();
-    AprilTag.init();
+    VisionSubsystem.init();
     RobotContainer.m_climber.init();
     RobotContainer.m_odometry.init();
     if (Robot.isReal()) {

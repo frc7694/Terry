@@ -31,7 +31,7 @@ public enum KeyButton implements ButtonType {
     a5(22),
     a_5(23),
     b5(24),
-    c6(26); // TODO: should this be 25? // ig not?
+    c6(25); // TODO: should this be 25?
 
     public final int pos;
 

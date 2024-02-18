@@ -4,8 +4,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI.Controller;
 import frc.robot.RobotContainer;
 import frc.robot.semiautodrive.RotationController;
-import frc.robot.systems.AprilTag;
-import frc.robot.values.Constants;
+import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.values.PID;
 
 public class RAprilTag implements RotationController {
@@ -21,8 +20,8 @@ public class RAprilTag implements RotationController {
 
     @Override
     public double getR() {
-        SmartDashboard.putNumber("err", AprilTag.table.getEntry("tx").getDouble(0));
-        return PID.aprilRotationPID.calculate(AprilTag.table.getEntry("tx").getDouble(0));
+        SmartDashboard.putNumber("err", VisionSubsystem.table.getEntry("tx").getDouble(0));
+        return PID.aprilRotationPID.calculate(VisionSubsystem.table.getEntry("tx").getDouble(0));
     }
 
     @Override
