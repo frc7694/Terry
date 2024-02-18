@@ -13,5 +13,5 @@ public class MessageCommand extends InstantCommand {
     public boolean runsWhenDisabled() {
         return true;
     }
-    
+
 }
