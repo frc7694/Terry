@@ -33,7 +33,6 @@ public class BrakeCommand extends Command {
     public void execute() {
         RobotContainer.m_robotDrive.setX();
     }
-    //
 
     @Override
     public boolean isFinished() {
