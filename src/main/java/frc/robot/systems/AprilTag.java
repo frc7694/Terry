@@ -25,4 +25,9 @@ public class AprilTag {
         return distance / 2; // idk why but divide it in half
     }
 
+    public static boolean isSpeaker() {
+        int tid = (int) table.getEntry("tid").getDouble(-1);
+        return tid == 3 || tid == 4 || tid == 7 || tid == 8;
+    }
+
 }

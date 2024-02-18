@@ -8,7 +8,8 @@ public enum Speed {
     OFF(() -> 0),
     INTAKE(() -> -.125),
     AMP(() ->.12),
-    SPEAKER(() -> AprilTag.getDistance() < 12 ? (-.025 * AprilTag.getDistance()) + 1.6 : 0);
+    SPEAKER(() -> AprilTag.getDistance() < 48 ? (-.025 * AprilTag.getDistance()) + 1.6 : 0),
+    FULL(() -> 1);
 
     private final DoubleSupplier value;
 
