@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.systems.Orangutan;
 import frc.robot.RobotContainer;
 import frc.robot.values.PID;
-import frc.robot.values.Variables;
 import frc.robot.OI.Controller;
 
 public class PIDRotateCommand extends Command {
@@ -18,7 +17,6 @@ public class PIDRotateCommand extends Command {
 
     @Override
     public void initialize() {
-        Variables.perryIsControllingHimselfAgainOhNo = true;
         PID.autoRotationPID.setSetpoint(desiredState);
         super.initialize();
     }
@@ -36,7 +34,6 @@ public class PIDRotateCommand extends Command {
     @Override
     public void end(boolean interrupted) {
         RobotContainer.setX();
-        Variables.perryIsControllingHimselfAgainOhNo = false;
         super.end(interrupted);
     }
 
