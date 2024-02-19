@@ -20,8 +20,8 @@ public class RAprilTag implements RotationController {
 
     @Override
     public double getR() {
-        SmartDashboard.putNumber("err", VisionSubsystem.table.getEntry("tx").getDouble(0));
-        return PID.aprilRotationPID.calculate(VisionSubsystem.table.getEntry("tx").getDouble(0));
+        SmartDashboard.putNumber("err", RobotContainer.m_vision.table.getEntry("tx").getDouble(0));
+        return PID.aprilRotationPID.calculate(RobotContainer.m_vision.table.getEntry("tx").getDouble(0));
     }
 
     @Override

@@ -8,10 +8,8 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.systems.Banana;
 import frc.robot.systems.Orangutan;
-import frc.robot.values.Variables;
 
 public class Robot extends TimedRobot {
 
@@ -34,8 +32,8 @@ public class Robot extends TimedRobot {
     } catch (RuntimeException ex) {
       DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
     }
-    RobotContainer.m_robotDash.init();
-    VisionSubsystem.init();
+    RobotContainer.m_dashboard.init();
+    RobotContainer.m_vision.init();
     RobotContainer.m_climber.init();
     RobotContainer.m_odometry.init();
     if (Robot.isReal()) {
@@ -56,7 +54,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = RobotContainer.m_robotDash.getAutonomousCommand();
+    m_autonomousCommand = RobotContainer.m_dashboard.getAutonomousCommand();
 
     m_autonomousCommand.schedule();
   }

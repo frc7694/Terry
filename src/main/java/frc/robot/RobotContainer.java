@@ -18,11 +18,12 @@ public class RobotContainer {
   public static final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public static final LauncherSubsystem m_launcher = new LauncherSubsystem();
   public static final ClimberSusbystem m_climber = new ClimberSusbystem();
-  public static final DashboardSubsystem m_robotDash = new DashboardSubsystem();
+  public static final DashboardSubsystem m_dashboard = new DashboardSubsystem();
   public static final SemiAutoSubsystem m_robotSemiAuto = new SemiAutoSubsystem(new XYManual(), new RManual());
   public static final OdometrySubsystem m_odometry = new OdometrySubsystem();
   public static final PneumaticSubsystem m_pneumatics = new PneumaticSubsystem();
   public static final LightSubsystem m_lights = new LightSubsystem();
+  public static final VisionSubsystem m_vision = new VisionSubsystem();
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.

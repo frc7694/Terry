@@ -13,7 +13,18 @@ public class LightSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        if ((Variables.aligned && RobotContainer.m_launcher.getSpeedMode() == Speed.INTAKE) || (VisionSubsystem.getDistance() < 48 && VisionSubsystem.isSpeaker())) blinkin.set(.77);
+        if (
+                (
+                        Variables.aligned
+                        && (
+                                RobotContainer.m_launcher.getSpeedMode() == Speed.INTAKE
+                                || Variables.override
+                        )
+                ) || (
+                        RobotContainer.m_vision.getDistance() < 48
+                        && RobotContainer.m_vision.isSpeaker()
+                )
+        ) blinkin.set(.77);
         else if (DriverStation.getAlliance().isEmpty()) blinkin.set(.55);
         else if (DriverStation.getAlliance().get() == DriverStation.Alliance.Red) blinkin.set(-.39);
         else blinkin.set(-.41);

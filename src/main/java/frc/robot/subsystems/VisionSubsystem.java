@@ -8,9 +8,9 @@ import frc.robot.values.Constants.LimeLightConstants;
 
 public class VisionSubsystem extends SubsystemBase {
 
-    public static NetworkTable table;
+    public NetworkTable table;
 
-    public static void init() {
+    public void init() {
         table = NetworkTableInstance.getDefault().getTable("limelight");
     }
 
@@ -19,7 +19,7 @@ public class VisionSubsystem extends SubsystemBase {
         table.getEntry("pipeline").setDouble(1);
     }
 
-    public static double getDistance() {
+    public double getDistance() {
         int tid = (int) table.getEntry("tid").getDouble(-1);
         int ty = (int) table.getEntry("ty").getDouble(0);
         if (tid == -1) return 0;
@@ -30,7 +30,7 @@ public class VisionSubsystem extends SubsystemBase {
         return distance / 2; // idk why but divide it in half
     }
 
-    public static boolean isSpeaker() {
+    public boolean isSpeaker() {
         int tid = (int) table.getEntry("tid").getDouble(-1);
         return tid == 3 || tid == 4 || tid == 7 || tid == 8;
     }

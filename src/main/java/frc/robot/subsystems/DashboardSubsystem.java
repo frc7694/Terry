@@ -35,7 +35,7 @@ public class DashboardSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("nav/roll", Orangutan.getRoll());
         SmartDashboard.putBoolean("fieldOriented", Variables.fod);
         SmartDashboard.putNumber("motorSpeed", RobotContainer.m_launcher.getSpeed());
-        SmartDashboard.putNumber("distance", VisionSubsystem.getDistance());
+        SmartDashboard.putNumber("distance", RobotContainer.m_vision.getDistance());
         SmartDashboard.putNumber("posX", RobotContainer.m_odometry.getX());
         SmartDashboard.putNumber("posY", RobotContainer.m_odometry.getY());
         SmartDashboard.putNumber("compressure", RobotContainer.m_pneumatics.getPressure());
