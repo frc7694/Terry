@@ -17,7 +17,7 @@ public class LightSubsystem extends SubsystemBase {
                 (
                         Variables.aligned
                         && (
-                                RobotContainer.m_launcher.getSpeedMode() == Speed.INTAKE
+                                RobotContainer.m_launcher.getSpeed() == Speed.INTAKE.getValue()
                                 || Variables.override
                         )
                 ) || (

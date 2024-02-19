@@ -22,10 +22,6 @@ public class LauncherSubsystem extends SubsystemBase {
         return speed.getValue();
     }
 
-    public Speed getSpeedMode() {
-        return speed;
-    }
-
     public void setSpeed(Speed speed) {
         this.speed = speed;
     }
