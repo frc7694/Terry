@@ -56,7 +56,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    Variables.autoTime = System.currentTimeMillis();
     m_autonomousCommand = RobotContainer.m_robotDash.getAutonomousCommand();
 
     m_autonomousCommand.schedule();

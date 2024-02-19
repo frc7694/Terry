@@ -57,7 +57,7 @@ public class SemiAutoSubsystem extends SubsystemBase {
         return rCtrl.getR();
     }
     public boolean getBrake() {
-        return xyCtrl.getBrake();
+        return xyCtrl.getBrake() || isNotMoving();
     }
 
     public void setStrafeController(StrafeController xyCtrl) {
@@ -74,6 +74,10 @@ public class SemiAutoSubsystem extends SubsystemBase {
 
     public String getRotation() {
         return rCtrl.toString();
+    }
+
+    public boolean isNotMoving() {
+        return getX() == 0 && getY() == 0 && getR() == 0;
     }
 
 }
