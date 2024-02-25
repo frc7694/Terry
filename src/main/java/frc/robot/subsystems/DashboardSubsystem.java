@@ -1,31 +1,29 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
-import frc.robot.commands.auto.AutoTest;
+import frc.robot.commands.auto.*;
+import frc.robot.commands.shooter.KickCommand;
 import frc.robot.values.Constants.DriveConstants;
 import frc.robot.values.Variables;
-import frc.robot.commands.auto.AutoDisabled;
 import frc.robot.systems.Orangutan;
 
 public class DashboardSubsystem extends SubsystemBase {
 
     private SendableChooser<Command> m_autoChooser = new SendableChooser<>();
-    private SendableChooser<Double> m_speedChooser = new SendableChooser<>();
 
     public DashboardSubsystem() {}
 
     public void init() {
         m_autoChooser.setDefaultOption("Disabled", new AutoDisabled());
-        m_autoChooser.addOption("Test", new AutoTest());
+        m_autoChooser.setDefaultOption("Just Shoot", new AutoShoot());
+        m_autoChooser.addOption("Center Instant", new AutoShootDrive());
+        m_autoChooser.addOption("Center Delay", new AutoShootWaitDrive());
         SmartDashboard.putData(m_autoChooser);
-        m_speedChooser.setDefaultOption("Vroom: 4", DriveConstants.kDriverSpeedyAF);
-        m_speedChooser.setDefaultOption("Joey: 3", DriveConstants.kDriverFast);
-        m_speedChooser.addOption("Mitch: 1.5", DriveConstants.kDriverSlow);
-        SmartDashboard.putData(m_speedChooser);
     }
 
     @Override
@@ -40,6 +38,10 @@ public class DashboardSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("posY", RobotContainer.m_odometry.getY());
         SmartDashboard.putNumber("compressure", RobotContainer.m_pneumatics.getPressure());
         SmartDashboard.putBoolean("limit", RobotContainer.m_climber.getLimit());
+        SmartDashboard.putBoolean("override", Variables.override);
+        SmartDashboard.putBoolean("aligned", Variables.aligned);
+        SmartDashboard.putNumber("fmstime", DriverStation.getMatchTime());
+
     }
 
     @Override
@@ -52,10 +54,6 @@ public class DashboardSubsystem extends SubsystemBase {
 
     public Command getAutonomousCommand() {
         return m_autoChooser.getSelected();
-    }
-
-    public double getSpeed() {
-        return m_speedChooser.getSelected();
     }
 
 }

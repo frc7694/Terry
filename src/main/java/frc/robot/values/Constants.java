@@ -180,8 +180,9 @@ public final class Constants {
     }
 
   public static final class LimeLightConstants {
-      public static final double kMountPitchDeg = 37;
-      public static final double kMountHeightIn = 7.75;
+      public static final double kMountPitchDeg = 43;
+      public static final double kMountHeightIn = 23;
+      public static final double kMountOffsetIn = 23.5;
       public static final double kAprilTagHeights[] = {
               53.38,
               53.38,
@@ -208,8 +209,8 @@ public final class Constants {
       public static final double kDriveRotationD = 0;
       public static final double kDriveRotationT = .5;
       public static final double kAprilRotationP = .01;
-      public static final double kAprilRotationI = .01;
-      public static final double kAprilRotationD = .001;
+      public static final double kAprilRotationI = 0;
+      public static final double kAprilRotationD = 0;
       public static final double kAprilRotationT = .25;
   }
 

@@ -15,10 +15,17 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.ADIS16470_IMU;
 import edu.wpi.first.wpilibj.ADIS16470_IMU.IMUAxis;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.OI.Controller;
 import frc.robot.swerve.MAXSwerveModule;
 import frc.robot.swerve.SwerveUtils;
+import frc.robot.systems.Orangutan;
 import frc.robot.values.Constants.DriveConstants;
+import frc.robot.values.Variables;
+
+import java.util.UUID;
 
 public class DriveSubsystem extends SubsystemBase {
   // Create MAXSwerveModules
@@ -135,6 +142,8 @@ public class DriveSubsystem extends SubsystemBase {
     if (rateLimit) {
       // Convert XY to polar for rate limiting
       double inputTranslationDir = Math.atan2(ySpeed, xSpeed);
+      if (Variables.fod) inputTranslationDir += Math.toRadians(Orangutan.get() + 180);
+      Controller.XBox.setRumble(GenericHID.RumbleType.kBothRumble, Variables.fod ? 0 : .05);
       double inputTranslationMag = Math.sqrt(Math.pow(xSpeed, 2) + Math.pow(ySpeed, 2));
 
       // Calculate the direction slew rate based on an estimate of the lateral acceleration

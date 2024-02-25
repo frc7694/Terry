@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.semiautodrive.impl.rotation.RManual;
 import frc.robot.semiautodrive.impl.strafe.XYManual;
@@ -32,16 +33,18 @@ public class RobotContainer {
     configureButtonBindings();
 
     m_robotDrive.setDefaultCommand(new RunCommand(() -> {
-                      if (m_robotSemiAuto.getBrake()) {
-                        setX();
-                      } else {
-                        m_robotDrive.drive(
-                                m_robotSemiAuto.getY(),
-                                m_robotSemiAuto.getX(),
-                                m_robotSemiAuto.getR(),
-                                true, true);
-                      }
-                    }, m_robotDrive));
+        if (DriverStation.isTeleop()) {
+          if (m_robotSemiAuto.getBrake()) {
+            setX();
+          } else {
+            m_robotDrive.drive(
+                    m_robotSemiAuto.getY(),
+                    m_robotSemiAuto.getX(),
+                    m_robotSemiAuto.getR(),
+                    true, true);
+          }
+        }
+      }, m_robotDrive));
   }
 
   private void configureButtonBindings() {

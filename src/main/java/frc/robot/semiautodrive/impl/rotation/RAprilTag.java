@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI.Controller;
 import frc.robot.RobotContainer;
 import frc.robot.semiautodrive.RotationController;
-import frc.robot.subsystems.VisionSubsystem;
 import frc.robot.values.PID;
 
 public class RAprilTag implements RotationController {
@@ -15,7 +14,7 @@ public class RAprilTag implements RotationController {
 
     @Override
     public void initialize() {
-        PID.aprilRotationPID.setSetpoint(0);
+        PID.aprilRotationPID.setSetpoint(5);
     }
 
     @Override

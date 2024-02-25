@@ -1,5 +1,6 @@
 package frc.robot.commands.drive;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import java.util.function.BooleanSupplier;
@@ -36,6 +37,8 @@ public class DriveCommand extends Command {
     @Override
     public void execute() {
         RobotContainer.m_robotDrive.drive(xSpeed, ySpeed, rot, true, true);
+//        if (isFinished()) end(false);
+        SmartDashboard.putBoolean("done", isFinished());
     }
 
     @Override
