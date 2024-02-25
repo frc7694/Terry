@@ -21,6 +21,8 @@ public class DashboardSubsystem extends SubsystemBase {
         m_autoChooser.setDefaultOption("Just Shoot", new AutoShoot());
         m_autoChooser.addOption("Center Instant", new AutoShootDrive());
         m_autoChooser.addOption("Center Delay", new AutoShootWaitDrive());
+        m_autoChooser.addOption("Blue Right Instant", new BlueRightAutoShootDrive());
+        m_autoChooser.addOption("Blue Right Delay", new BlueRightAutoShootWaitDrive());
         SmartDashboard.putData(m_autoChooser);
         SmartDashboard.putNumber("Delay", 0);
     }

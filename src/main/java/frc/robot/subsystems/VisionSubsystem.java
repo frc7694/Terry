@@ -43,4 +43,9 @@ public class VisionSubsystem extends SubsystemBase {
         return tid == 3 || tid == 4 || tid == 7 || tid == 8;
     }
 
+    public boolean isRight() {
+        int tx = (int) table.getEntry("tx").getDouble(0);
+        return tx > 0;
+    }
+
 }

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.wait.TimeCommand;
+import frc.robot.semiautodrive.impl.rotation.RManual;
 import frc.robot.systems.Orangutan;
 
 public class Robot extends TimedRobot {
@@ -64,7 +65,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-//    RobotContainer.m_pneumatics.init();
+    RobotContainer.m_robotSemiAuto.setRotationController(new RManual());
   }
 
   @Override
