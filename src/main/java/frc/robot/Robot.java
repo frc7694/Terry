@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.wait.TimeCommand;
 import frc.robot.systems.Orangutan;
 
 public class Robot extends TimedRobot {
@@ -52,7 +53,7 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = RobotContainer.m_dashboard.getAutonomousCommand();
 
-    m_autonomousCommand.schedule();
+    new TimeCommand((long) RobotContainer.m_dashboard.getDelay() * 1000).andThen(m_autonomousCommand).schedule();
   }
 
   @Override

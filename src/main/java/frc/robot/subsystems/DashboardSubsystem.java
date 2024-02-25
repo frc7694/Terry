@@ -7,8 +7,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.commands.auto.*;
-import frc.robot.commands.shooter.KickCommand;
-import frc.robot.values.Constants.DriveConstants;
 import frc.robot.values.Variables;
 import frc.robot.systems.Orangutan;
 
@@ -24,6 +22,7 @@ public class DashboardSubsystem extends SubsystemBase {
         m_autoChooser.addOption("Center Instant", new AutoShootDrive());
         m_autoChooser.addOption("Center Delay", new AutoShootWaitDrive());
         SmartDashboard.putData(m_autoChooser);
+        SmartDashboard.putNumber("Delay", 0);
     }
 
     @Override
@@ -41,7 +40,6 @@ public class DashboardSubsystem extends SubsystemBase {
         SmartDashboard.putBoolean("override", Variables.override);
         SmartDashboard.putBoolean("aligned", Variables.aligned);
         SmartDashboard.putNumber("fmstime", DriverStation.getMatchTime());
-
     }
 
     @Override
@@ -54,6 +52,11 @@ public class DashboardSubsystem extends SubsystemBase {
 
     public Command getAutonomousCommand() {
         return m_autoChooser.getSelected();
+    }
+
+    public double getDelay() {
+        double value = SmartDashboard.getNumber("Delay", 0);
+        return value > 12 ? 5 : value;
     }
 
 }
