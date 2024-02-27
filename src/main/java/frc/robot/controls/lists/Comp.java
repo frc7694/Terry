@@ -52,7 +52,16 @@ public enum Comp implements ControlList {
     ClimberUp(      Controller.HIDI3, TransportButton.REW,     When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::down)),
     ClimberUpStop(  Controller.HIDI3, TransportButton.REW,     When.ON_FALSE,   new InstantCommand(RobotContainer.m_climber::stop)),
     ClimberDown(    Controller.HIDI3, TransportButton.FF,      When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::up)),
-    ClimberDownStop(Controller.HIDI3, TransportButton.FF,      When.ON_FALSE,   new InstantCommand(RobotContainer.m_climber::stop));
+    ClimberDownStop(Controller.HIDI3, TransportButton.FF,      When.ON_FALSE,   new InstantCommand(RobotContainer.m_climber::stop)),
+    Shoot(          Controller.BBox,  BoxButton.RED,           When.ON_TRUE,    new KickCommandGroup()),
+    MotorsOn(       Controller.BBox,  SwitchButton.EIGHT,      When.ON_TRUE,    new SpeedCommand(Speed.SPEAKER)),
+    MotorsOff(      Controller.BBox,  SwitchButton.EIGHT,      When.ON_FALSE,   new SpeedCommand(Speed.OFF)),
+    ReleaseBox(     Controller.BBox,  BoxButton.ONE,           When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::up)),
+    ReleaseBoxStop( Controller.BBox,  BoxButton.ONE,           When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::stop)),
+    ClimbBox(       Controller.BBox,  BoxButton.THREE,         When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::down)),
+    ClimbBoxStop(   Controller.BBox,  BoxButton.THREE,         When.ON_TRUE,    new InstantCommand(RobotContainer.m_climber::stop)),
+    IntakeHold(     Controller.BBox,  BoxButton.GREEN,         When.ON_TRUE,    new SpeedCommand(Speed.INTAKE)),
+    IntakeLetGo(    Controller.BBox,  BoxButton.GREEN,         When.ON_FALSE,   new SpeedCommand(Speed.SPEAKER));
 //    Compress(      Controller.HIDI1,  KeyButton.c4,            When.ON_TRUE,    new InstantCommand(RobotContainer.m_pneumatics::init));
 //    ClimberUp(     );
 

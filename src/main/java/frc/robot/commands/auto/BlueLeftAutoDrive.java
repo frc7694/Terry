@@ -14,9 +14,9 @@ public class BlueLeftAutoDrive extends SequentialCommandGroup {
         addCommands(new InstantCommand(RobotContainer.m_odometry::reset));
         addCommands(new InstantCommand(Orangutan::reset));
         addCommands(new InstantCommand(() -> Variables.fod = true));
-        addCommands(new InstantCommand(() -> Orangutan.set(200)));
+        addCommands(new InstantCommand(() -> Orangutan.set(120)));
         addCommands(new InstantCommand(() -> RobotContainer.m_robotSemiAuto.setRotationController(new RLockBack())));
-        addCommands(new DriveCommand(.3, .3, RobotContainer.m_robotSemiAuto.getR(), () -> RobotContainer.m_odometry.getX() <= -1.75));
+        addCommands(new DriveCommand(.3, -.3, RobotContainer.m_robotSemiAuto.getR(), () -> RobotContainer.m_odometry.getX() >= 2.5));
         addCommands(new BrakeCommand(500));
     }
 }

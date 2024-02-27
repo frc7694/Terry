@@ -14,7 +14,8 @@ public enum ClickableButton implements ButtonType {
     LSTICK(9),
     RSTICK(10),
     LINES(8),
-    SQUARES(7);
+    SQUARES(7),
+    ELEVEN(11);
 
     public final int value;
 

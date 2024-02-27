@@ -35,11 +35,22 @@ public class OdometrySubsystem extends SubsystemBase {
         return m_poseEstimator.getEstimatedPosition().getY();
     }
 
+    public Pose2d getPose() {
+        return m_poseEstimator.getEstimatedPosition();
+    }
+
     public void reset() {
         m_poseEstimator.resetPosition(
                 Orangutan.get2D(),
                 RobotContainer.m_robotDrive.getPoses(),
                 new Pose2d());
+    }
+
+    public void reset(Pose2d pose) {
+        m_poseEstimator.resetPosition(
+                Orangutan.get2D(),
+                RobotContainer.m_robotDrive.getPoses(),
+                pose);
     }
 
 }
