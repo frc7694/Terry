@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -35,10 +36,11 @@ public class Robot extends TimedRobot {
     } catch (RuntimeException ex) {
       DriverStation.reportError("Error instantiating navX MXP:  " + ex.getMessage(), true);
     }
-    RobotContainer.m_dashboard.init();
     RobotContainer.m_vision.init();
     RobotContainer.m_climber.init();
     RobotContainer.m_odometry.init();
+    RobotContainer.m_robotDrive.init();
+    RobotContainer.m_dashboard.init();
   }
 
   @Override
@@ -55,6 +57,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = RobotContainer.m_dashboard.getAutonomousCommand();
+//    m_autonomousCommand = new PathPlannerAuto("Center");
 
     if (m_autonomousCommand != null) new TimeCommand((long) RobotContainer.m_dashboard.getDelay() * 1000).andThen(m_autonomousCommand).schedule();
   }

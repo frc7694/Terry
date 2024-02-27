@@ -36,6 +36,7 @@ public class OdometrySubsystem extends SubsystemBase {
     }
 
     public Pose2d getPose() {
+        if (m_poseEstimator == null) return new Pose2d();
         return m_poseEstimator.getEstimatedPosition();
     }
 

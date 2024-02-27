@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,16 +21,10 @@ public class DashboardSubsystem extends SubsystemBase {
     public void init() {
         m_autoChooser.setDefaultOption("Disabled", new AutoDisabled());
         m_autoChooser.setDefaultOption("Just Shoot", new AutoShoot());
-        m_autoChooser.addOption("Center Instant", new AutoShootDrive());
-        m_autoChooser.addOption("Center Delay", new AutoShootWaitDrive());
-        m_autoChooser.addOption("Blue Right Instant", new BlueRightAutoShootDrive());
-        m_autoChooser.addOption("Blue Right Delay", new BlueRightAutoShootWaitDrive());
-        m_autoChooser.addOption("Red Right Instant", new RedRightAutoShootDrive());
-        m_autoChooser.addOption("Red Right Delay", new RedRightAutoShootWaitDrive());
-        m_autoChooser.addOption("Blue Left Instant", new BlueLeftAutoShootDrive());
-        m_autoChooser.addOption("Blue Left Delay", new BlueLeftAutoShootWaitDrive());
-        m_autoChooser.addOption("Red Left Instant", new RedLeftAutoShootDrive());
-        m_autoChooser.addOption("Red Left Delay", new RedLeftAutoShootWaitDrive());
+        m_autoChooser.addOption("Center", new PathPlannerAuto("Center"));
+        m_autoChooser.addOption("Straight", new PathPlannerAuto("Straight"));
+        m_autoChooser.addOption("Angle", new PathPlannerAuto("Angle"));
+//        m_autoChooser = AutoBuilder.buildAutoChooser();
         SmartDashboard.putData(m_autoChooser);
         SmartDashboard.putNumber("Delay", 3);
     }

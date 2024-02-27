@@ -4,8 +4,15 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.auto.AutoShoot;
+import frc.robot.commands.auto.SetAngle;
+import frc.robot.commands.auto.SetBackwards;
+import frc.robot.commands.auto.SetStraight;
+import frc.robot.commands.shooter.KickCommandGroup;
+import frc.robot.commands.wait.FMSTimeCommand;
 import frc.robot.semiautodrive.impl.rotation.RManual;
 import frc.robot.semiautodrive.impl.strafe.XYManual;
 import frc.robot.subsystems.*;
@@ -16,8 +23,7 @@ import frc.robot.systems.Orangutan;
 import frc.robot.values.Variables;
 
 public class RobotContainer {
-  //  public static final DriveSubsystem m_robotDrive = new DriveSubsystem();
-    public static final DriveSubsystem m_robotDrive = null;
+  public static final DriveSubsystem m_robotDrive = new DriveSubsystem();
   public static final LauncherSubsystem m_launcher = new LauncherSubsystem();
   public static final ClimberSusbystem m_climber = new ClimberSusbystem();
   public static final DashboardSubsystem m_dashboard = new DashboardSubsystem();
@@ -32,6 +38,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     configureButtonBindings();
+    configureNamedCommands();
 
     m_robotDrive.setDefaultCommand(new RunCommand(() -> {
         if (DriverStation.isTeleop()) {
@@ -72,6 +79,18 @@ public class RobotContainer {
       }
     }
   }
+
+  private void configureNamedCommands() {
+    NamedCommands.registerCommand("shoot", new AutoShoot());
+    NamedCommands.registerCommand("wait3", new FMSTimeCommand(3));
+    NamedCommands.registerCommand("wait4", new FMSTimeCommand(4));
+    NamedCommands.registerCommand("wait5", new FMSTimeCommand(5));
+    NamedCommands.registerCommand("wait6", new FMSTimeCommand(6));
+    NamedCommands.registerCommand("setStraight", new SetStraight());
+    NamedCommands.registerCommand("setAngle", new SetAngle());
+    NamedCommands.registerCommand("setBack", new SetBackwards());
+  }
+
   public static void setX() {
     m_robotDrive.setX();
   }

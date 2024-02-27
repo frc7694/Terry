@@ -79,7 +79,7 @@ public class DriveSubsystem extends SubsystemBase {
           });
 
   /** Creates a new DriveSubsystem. */
-  public DriveSubsystem() {
+  public void init() {
     AutoBuilder.configureHolonomic(
             RobotContainer.m_odometry::getPose,
             RobotContainer.m_odometry::reset,
@@ -87,7 +87,7 @@ public class DriveSubsystem extends SubsystemBase {
             this::driveRobotRelative,
             new HolonomicPathFollowerConfig(
                     new PIDConstants(5, 0, 0),
-                    new PIDConstants(5, 0, 0),
+                    new PIDConstants(0, 0, 0),
                     DriveConstants.kMaxSpeedMetersPerSecond,
                     .5,
                     new ReplanningConfig()
@@ -105,7 +105,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   private void driveRobotRelative(ChassisSpeeds speeds) {
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(speeds);
-    SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
+    SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, 2);
     setModuleStates(swerveModuleStates);
   }
 
